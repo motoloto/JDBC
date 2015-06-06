@@ -1,0 +1,15 @@
+DROP TABLE COFFEES;
+ 
+CREATE TABLE COFFEES 
+(COF_NAME varchar(32), 
+ SUP_ID int, 
+ PRICE number(7,2), 
+ SALES int, 
+ TOTAL int);
+
+
+¡´JDBC Rowset Implementations
+  http://java.sun.com/developer/earlyAccess/jdbc/jdbc-rowset.html
+  
+  
+  
