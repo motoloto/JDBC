@@ -1,0 +1,52 @@
+
+public class NoDeadLock_2 {
+	public static void main(String args[]){
+		T1 t1 = new T1(3, "T1");
+		T2 t2 = new T2(0, "T2");
+
+		t1.start();
+		t2.start();
+		try{
+			Thread.sleep(1000);
+		}catch(Exception e){}
+		t1.interrupt();
+	}
+}
+
+class T1 extends Thread{
+	private int sleepTime = 0;
+	public static boolean finished = false;
+
+	public T1(int second, String name){
+		super(name);
+		sleepTime = second;
+	}
+
+	public void run(){
+		System.out.println("T1 running...");
+		try{
+			for(int i=0;i<sleepTime;i++){
+				Thread.sleep(1000);
+				// test if has been interrupt()
+				if(isInterrupted())break;
+			}
+		}catch(Exception e){}
+		System.out.println("T1 finished.");
+		T1.finished = true;
+	}
+}
+
+class T2 extends Thread{
+	private int sleepTime = 0;
+
+	public T2(int second, String name){
+		super(name);
+		sleepTime = second;
+	}
+
+	public void run(){
+		while(!T1.finished){yield();}
+		System.out.println("T2 running...");
+		System.out.println("T2 finished.");
+	}
+}

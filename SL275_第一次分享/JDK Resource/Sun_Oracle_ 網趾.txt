@@ -1,0 +1,6 @@
+
+2010年Oracle宣佈併購Sun Microsystems之後:
+-----------------------------------------
+原Sun官網: http://java.sun.com
+
+會導向Oracle官網:http://www.oracle.com/technetwork/java/index.html
